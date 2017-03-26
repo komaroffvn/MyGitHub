@@ -1,0 +1,35 @@
+unit AddCategory;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Mask, DBCtrls;
+
+type
+  TForm5 = class(TForm)
+    DBEdit1: TDBEdit;
+    Button1: TButton;
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form5: TForm5;
+
+implementation
+
+uses sklad343;
+
+{$R *.dfm}
+
+procedure TForm5.Button1Click(Sender: TObject);
+begin
+  If Form1.CategoryADOQuery1.Modified then Form1.CategoryADOQuery1.Post;
+  Form5.Close;
+end;
+
+end.

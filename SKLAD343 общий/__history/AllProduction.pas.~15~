@@ -1,0 +1,86 @@
+unit AllProduction;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Grids, DBGrids, DB, ADODB, Menus, IniFiles, UITypes;
+
+type
+  TForm2 = class(TForm)
+    ADOConnection1: TADOConnection;
+    DataSource1: TDataSource;
+    DBGrid1: TDBGrid;
+    MainMenu1: TMainMenu;
+    N1: TMenuItem;
+    N2: TMenuItem;
+    N3: TMenuItem;
+    N4: TMenuItem;
+    ADOTable1: TADOTable;
+    ADOTable1tovar_id: TAutoIncField;
+    ADOTable1cat_id: TIntegerField;
+    ADOTable1tovName: TWideStringField;
+    ADOTable1screenshots: TBlobField;
+    ADOTable1project_begin: TDateTimeField;
+    ADOTable1price: TBCDField;
+    ADOTable1description: TMemoField;
+    ADOTable1sklad_id: TIntegerField;
+    ADOTable1counts: TIntegerField;
+    ADOTable1summa: TBCDField;
+    ADOTable1Summ: TIntegerField;
+    PrintDialog1: TPrintDialog;
+    procedure ADOTable1CalcFields(DataSet: TDataSet);
+    procedure N3Click(Sender: TObject);
+    procedure DBGrid1TitleClick(Column: TColumn);
+    procedure FormCreate(Sender: TObject);
+
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form2: TForm2;
+  Ini : TIniFile;
+implementation
+
+{$R *.dfm}
+//Вычисляемое поле сумма
+procedure TForm2.ADOTable1CalcFields(DataSet: TDataSet);
+begin
+  ADOTable1Summ.AsInteger:=ADOTable1price.AsInteger*ADOTable1counts.AsInteger;
+end;
+
+//Сортировка столбцов по клику на верхней шапке
+procedure TForm2.DBGrid1TitleClick(Column: TColumn);
+begin
+  ADOTable1.IndexFieldNames:=Column.FieldName;
+end;
+
+//Подключение БД из ini файла
+procedure TForm2.FormCreate(Sender: TObject);
+var put1 : string;
+ begin
+  Ini:= TIniFile.Create(ExtractFilePath(ParamStr(0))+'setting.ini');
+  put1:= Ini.ReadString('Путь к БД','ConStr','');
+  Ini.Free;
+    if put1=''
+    then
+    MessageDlg('Файл БД не найден',mtError,[mbOk],0)
+    else
+     begin
+      Form2.ADOConnection1.ConnectionString:='Provider=Microsoft.Jet.OLEDB.4.0;Data Source='+put1+';Persist Security Info=False;';
+      Form2.ADOConnection1.Open();
+      Form2.ADOConnection1.Connected:=true;
+      Form2.ADOTable1.Active:= true;
+     end;
+end;
+
+//Открыть Принтер-диалог
+procedure TForm2.N3Click(Sender: TObject);
+begin
+ PrintDialog1.Execute;
+end;
+
+end.

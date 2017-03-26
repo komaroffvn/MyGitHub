@@ -1,0 +1,144 @@
+unit sklad343;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, Menus, StdCtrls, Grids, DBGrids, ToolWin, ComCtrls,
+  ImgList, Buttons, DB, ADODB, DBCtrls;
+
+type
+  TForm1 = class(TForm)
+    MainMenu1: TMainMenu;
+    OpenDialog1: TOpenDialog;
+    GroupBox1: TGroupBox;
+    DBGrid1: TDBGrid;
+    DBGrid2: TDBGrid;
+    GroupBox2: TGroupBox;
+    Edit1: TEdit;
+    BtnProductiya: TMenuItem;
+    BtnPlus: TMenuItem;
+    BtnEdit: TMenuItem;
+    BtnDelete: TMenuItem;
+    BtnKategory: TMenuItem;
+    ToolBar1: TToolBar;
+    SpeedButton1: TSpeedButton;
+    SpeedButton2: TSpeedButton;
+    SpeedButton3: TSpeedButton;
+    ADOConnection1: TADOConnection;
+    CategoryADOTable1: TADOTable;
+    ProductionADOTable2: TADOTable;
+    DataSource1: TDataSource;
+    DataSource2: TDataSource;
+    CategoryADOTable1cat_id: TAutoIncField;
+    CategoryADOTable1catName: TWideStringField;
+    ProductionADOTable2tovar_id: TAutoIncField;
+    ProductionADOTable2cat_id: TIntegerField;
+    ProductionADOTable2tovName: TWideStringField;
+    ProductionADOTable2screenshots: TBlobField;
+    ProductionADOTable2project_begin: TDateTimeField;
+    ProductionADOTable2price: TBCDField;
+    ProductionADOTable2description: TMemoField;
+    ProductionADOTable2sklad_id: TIntegerField;
+    ProductionADOTable2counts: TIntegerField;
+    ProductionADOTable2summa: TFloatField;
+    N1: TMenuItem;
+    N2: TMenuItem;
+    N3: TMenuItem;
+    N4: TMenuItem;
+    Button2: TButton;
+    ProductionADOTable2Summ: TIntegerField;
+    DBImage1: TDBImage;
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure Edit1Change(Sender: TObject);
+    procedure ProductionADOTable2FilterRecord(DataSet: TDataSet;
+      var Accept: Boolean);
+    procedure ProductionADOTable2CalcFields(DataSet: TDataSet);
+    procedure BtnDeleteClick(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure BtnPlusClick(Sender: TObject);
+    procedure BtnEditClick(Sender: TObject);
+
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+  
+implementation
+
+uses AddProduction, AllProduction, zastavka, Unit4;
+
+{$R *.dfm}
+
+
+//Добавление продукции
+procedure TForm1.SpeedButton1Click(Sender: TObject);
+begin
+Form1.ProductionADOTable2.Append;
+AddProductionForm.Show;
+end;
+
+procedure TForm1.Button2Click(Sender: TObject);
+begin
+ Form2.Show;
+end;
+
+//Фильтрация (поиск) продукции по наименованию
+procedure TForm1.Edit1Change(Sender: TObject);
+begin
+  ProductionADOTable2.Filtered:=false;
+  ProductionADOTable2.Filtered:=true;
+end;
+
+procedure TForm1.ProductionADOTable2FilterRecord(DataSet: TDataSet;
+  var Accept: Boolean);
+  var FieldVal:string;
+begin
+  FieldVal := DataSet['tovName'];
+Accept := copy(AnsiUpperCase(FieldVal), 1, length(edit1.text)) = AnsiUpperCase(edit1.Text);
+end;
+
+//Вычисляемое поле Сумма
+procedure TForm1.ProductionADOTable2CalcFields(DataSet: TDataSet);
+begin
+  ProductionADOTable2Summ.AsInteger:=ProductionADOTable2price.AsInteger*ProductionADOTable2counts.AsInteger;
+end;
+//Удаление прдукции через меню
+procedure TForm1.BtnDeleteClick(Sender: TObject);
+begin
+ Form1.ProductionADOTable2.Delete;
+end;
+
+//Удаление прдукции через значёк
+procedure TForm1.SpeedButton3Click(Sender: TObject);
+begin
+  Form4.Show;
+end;
+
+//Изменение продукции через значёк
+procedure TForm1.SpeedButton2Click(Sender: TObject);
+begin
+  AddProductionForm.Show;
+end;
+
+//Добавление продукции через меню
+procedure TForm1.BtnPlusClick(Sender: TObject);
+begin
+ Form1.ProductionADOTable2.Append;
+ AddProductionForm.Show;
+end;
+
+//Изменение продукции через меню
+procedure TForm1.BtnEditClick(Sender: TObject);
+begin
+  AddProductionForm.Show;
+end;
+
+end.

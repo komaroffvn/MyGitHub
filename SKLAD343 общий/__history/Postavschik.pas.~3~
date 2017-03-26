@@ -1,0 +1,30 @@
+unit Postavschik;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Data.Win.ADODB, Vcl.Grids,
+  Vcl.DBGrids, Vcl.ExtCtrls, Vcl.DBCtrls;
+
+type
+  TForm10 = class(TForm)
+    DBNavigator1: TDBNavigator;
+    DBGrid1: TDBGrid;
+    DataSource1: TDataSource;
+    ADOConnection1: TADOConnection;
+    ADOTable1: TADOTable;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form10: TForm10;
+
+implementation
+
+{$R *.dfm}
+
+end.

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.154,C:\Users\Admin\Desktop\SKLAD343\Postavschik.dfm=C:\Users\Admin\Desktop\SKLAD343\Unit10.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.900,C:\Users\admin\Desktop\SKLAD343\rashod.pas=C:\Users\admin\Desktop\SKLAD343\Unit7.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.595,=C:\Users\admin\Desktop\SKLAD343\Unit8.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.524,=C:\Users\admin\Desktop\SKLAD343\Unit9.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.487,=C:\Users\admin\Desktop\SKLAD343\Unit7.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.515,C:\Users\admin\Desktop\SKLAD343\RedaktRashod.dfm=C:\Users\admin\Desktop\SKLAD343\Unit9.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.154,C:\Users\Admin\Desktop\SKLAD343\Postavschik.pas=C:\Users\Admin\Desktop\SKLAD343\Unit10.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.345,C:\Users\admin\Desktop\SKLAD343\ostatok.dfm=C:\Users\admin\Desktop\SKLAD343\Unit8.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.345,C:\Users\admin\Desktop\SKLAD343\ostatok.pas=C:\Users\admin\Desktop\SKLAD343\Unit8.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.900,C:\Users\admin\Desktop\SKLAD343\rashod.dfm=C:\Users\admin\Desktop\SKLAD343\Unit7.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.515,C:\Users\admin\Desktop\SKLAD343\RedaktRashod.pas=C:\Users\admin\Desktop\SKLAD343\Unit9.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.642,=C:\Users\Admin\Desktop\SKLAD343 общий\Unit11.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.337,=C:\Users\Admin\Desktop\SKLAD343\Unit10.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.210,C:\Users\Admin\Desktop\SKLAD343 общий\Unit11.dfm=C:\Users\Admin\Desktop\SKLAD343 общий\report.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.210,C:\Users\Admin\Desktop\SKLAD343 общий\Unit11.pas=C:\Users\Admin\Desktop\SKLAD343 общий\report.pas</Transaction>
+  </Transactions>
+</BorlandProject>

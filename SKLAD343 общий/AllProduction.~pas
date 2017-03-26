@@ -1,0 +1,50 @@
+unit AllProduction;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Grids, DBGrids, DB, ADODB, Menus;
+
+type
+  TForm2 = class(TForm)
+    ADOConnection1: TADOConnection;
+    DataSource1: TDataSource;
+    DBGrid1: TDBGrid;
+    MainMenu1: TMainMenu;
+    N1: TMenuItem;
+    N2: TMenuItem;
+    N3: TMenuItem;
+    N4: TMenuItem;
+    ADOTable1: TADOTable;
+    ADOTable1tovar_id: TAutoIncField;
+    ADOTable1cat_id: TIntegerField;
+    ADOTable1tovName: TWideStringField;
+    ADOTable1screenshots: TBlobField;
+    ADOTable1project_begin: TDateTimeField;
+    ADOTable1price: TBCDField;
+    ADOTable1description: TMemoField;
+    ADOTable1sklad_id: TIntegerField;
+    ADOTable1counts: TIntegerField;
+    ADOTable1summa: TBCDField;
+    ADOTable1Summ: TIntegerField;
+   procedure ADOTable1CalcFields(DataSet: TDataSet);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form2: TForm2;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm2.ADOTable1CalcFields(DataSet: TDataSet);
+begin
+  ADOTable1Summ.AsInteger:=ADOTable1price.AsInteger*ADOTable1counts.AsInteger;
+end;
+
+end.
